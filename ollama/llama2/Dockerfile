@@ -1,7 +1,9 @@
 FROM --platform=$BUILDPLATFORM docker.io/ollama/ollama:latest
 
-RUN ollama serve & sleep 10 && echo "Pulling model..." && ollama pull llama2
-
-EXPOSE 11434
-
-CMD ["serve"]
+RUN bash -c '                             \
+    ( ollama serve ) & serverpid="$!";    \
+    sleep 5;                              \
+    ollama pull llama2 &&                    \
+    kill "$serverpid" &&                  \
+    wait "$serverpid"                     \
+'
