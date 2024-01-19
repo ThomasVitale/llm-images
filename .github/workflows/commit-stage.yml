@@ -1,9 +1,9 @@
 name: Commit Stage
 
 on:
-  push:
-    branches:
-      - main
+  schedule: # Every Monday
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
@@ -43,8 +43,16 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v5
+        id: build
         with:
           context: ${{ matrix.project.directory }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:latest
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3.3.0
+      
+      - name: Sign image
+        run: |
+          cosign sign --yes "${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}@${{ steps.build.outputs.digest }}"

@@ -6,4 +6,5 @@ Catalog of OCI images for popular open-source Large Language Models.
 
 * `ghcr.io/thomasvitale/ollama-llama2`
 * `ghcr.io/thomasvitale/ollama-mistral`
+* `ghcr.io/thomasvitale/ollama-orca-mini`
 * `ghcr.io/thomasvitale/ollama-phi`

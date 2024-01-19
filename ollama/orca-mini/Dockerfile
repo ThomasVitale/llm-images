@@ -1,5 +1,5 @@
 FROM --platform=$BUILDPLATFORM docker.io/ollama/ollama:latest
-RUN /bin/sh -c "/bin/ollama serve & sleep 1 && ollama pull phi"
+RUN /bin/sh -c "/bin/ollama serve & sleep 1 && ollama pull orca-mini"
 
 EXPOSE 11434
 
