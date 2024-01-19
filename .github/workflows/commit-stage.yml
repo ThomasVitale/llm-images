@@ -8,6 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   ORGANIZATION: thomasvitale
+  VERSION: ${{ github.sha }}
 
 jobs:
   build:
@@ -49,7 +50,7 @@ jobs:
           context: ${{ matrix.project.directory }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:latest
+          tags: ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:${{ env.VERSION }}t,${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:latest
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3.3.0
