@@ -22,6 +22,7 @@ jobs:
         project: [
           {directory: ollama/llama2, name: ollama-llama2},
           {directory: ollama/mistral, name: ollama-mistral},
+          {directory: ollama/orca-mini, name: ollama-orca-mini},
           {directory: ollama/phi, name: ollama-phi}
         ]
     steps:
