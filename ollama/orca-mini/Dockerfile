@@ -1,3 +1,3 @@
 FROM docker.io/ollama/ollama:latest
 
-RUN ollama serve & sleep 1 && ollama pull orca-mini
+RUN /bin/sh -c "/bin/ollama serve & sleep 1 && ollama pull orca-mini"
