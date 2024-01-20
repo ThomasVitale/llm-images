@@ -1,12 +1,20 @@
-name: Commit Stage
+name: Build and Publish
 
 on:
-  push:
+  workflow_call:
+    inputs:
+      context:
+        description: "Folder with build context."
+        required: true
+        type: string
+      image:
+        description: "Name of the OCI image."
+        required: true
+        type: string
 
 env:
   REGISTRY: ghcr.io
-  IMAGE: thomasvitale/ollama-orca-mini
-  VERSION: ${{ github.sha }}
+  IMAGE: thomasvitale/${{ inputs.image }}
 
 jobs:
   build:
@@ -38,7 +46,7 @@ jobs:
             org.opencontainers.image.licenses='Apache-2.0'
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
-            org.opencontainers.image.version=${{ env.VERSION }}
+            org.opencontainers.image.version=${{ github.sha }}
             org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}
 
       - name: Set up QEMU
@@ -58,7 +66,7 @@ jobs:
         uses: docker/build-push-action@v5
         id: build
         with:
-          context: ollama/orca-mini
+          context: ${{ inputs.context }}
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=image,name=${{ env.REGISTRY }}/${{ env.IMAGE }},push-by-digest=true,name-canonical=true,push=true
@@ -103,7 +111,7 @@ jobs:
             org.opencontainers.image.licenses='Apache-2.0'
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
-            org.opencontainers.image.version=${{ env.VERSION }}
+            org.opencontainers.image.version=${{ github.sha }}
             org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
