@@ -12,7 +12,7 @@ env:
 
 jobs:
   build:
-    runs-on: macos-12
+    runs-on: ubuntu-22.04
     permissions:
       contents: read
       packages: write
@@ -42,12 +42,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.IMAGE_PUSH_TOKEN }}
           registry: ${{ env.REGISTRY }}
-
+      
       - name: Build and push
-        uses: docker/build-push-action@v5
-        id: build
-        with:
-          context: ${{ matrix.project.directory }}
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:${{ env.VERSION }}t,${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:latest
+        run: |
+          docker buildx build --push --platform=linux/amd64,linux/arm64 -t ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:latest ${{ matrix.project.directory }}
+
+      # - name: Build and push
+      #   uses: docker/build-push-action@v5
+      #   id: build
+      #   with:
+      #     context: ${{ matrix.project.directory }}
+      #     platforms: linux/amd64,linux/arm64
+      #     push: true
+      #     tags: ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:${{ env.VERSION }},${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:latest
