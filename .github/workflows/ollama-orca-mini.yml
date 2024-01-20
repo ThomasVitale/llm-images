@@ -105,6 +105,9 @@ jobs:
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
             org.opencontainers.image.version=${{ env.VERSION }}
             org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=long
 
       - name: Login to container registry
         uses: docker/login-action@v3
@@ -122,8 +125,3 @@ jobs:
       - name: Inspect image
         run: |
           docker buildx imagetools inspect ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ steps.meta.outputs.version }}
-
-      - name: Push additional tags
-        run: |
-          docker tag ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ steps.meta.outputs.version }} ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest
