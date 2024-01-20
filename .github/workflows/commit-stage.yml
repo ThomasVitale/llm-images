@@ -48,7 +48,7 @@ jobs:
         id: build
         with:
           context: ${{ matrix.project.directory }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:${{ env.VERSION }}
