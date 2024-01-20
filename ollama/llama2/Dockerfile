@@ -1,9 +1,3 @@
-FROM --platform=$BUILDPLATFORM docker.io/ollama/ollama:latest
+FROM docker.io/ollama/ollama:latest
 
-RUN bash -c '                             \
-    ( ollama serve ) & serverpid="$!";    \
-    sleep 5;                              \
-    ollama pull llama2 &&                    \
-    kill "$serverpid" &&                  \
-    wait "$serverpid"                     \
-'
+RUN /bin/sh -c "/bin/ollama serve & sleep 1 && ollama pull llama2"
