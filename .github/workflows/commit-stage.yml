@@ -42,16 +42,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.IMAGE_PUSH_TOKEN }}
           registry: ${{ env.REGISTRY }}
-      
-      - name: Build and push
-        run: |
-          docker buildx build --push --platform=linux/amd64,linux/arm64 -t ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:latest ${{ matrix.project.directory }}
 
-      # - name: Build and push
-      #   uses: docker/build-push-action@v5
-      #   id: build
-      #   with:
-      #     context: ${{ matrix.project.directory }}
-      #     platforms: linux/amd64,linux/arm64
-      #     push: true
-      #     tags: ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:${{ env.VERSION }},${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:latest
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        id: build
+        with:
+          context: ${{ matrix.project.directory }}
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:${{ env.VERSION }}
+            ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ matrix.project.name }}:latest
