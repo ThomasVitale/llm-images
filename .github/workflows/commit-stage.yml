@@ -66,6 +66,6 @@ jobs:
           labels: |
             org.opencontainers.image.licenses='Apache-2.0'
             org.opencontainers.image.revision=${{ github.sha }}
-            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}.git
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
             org.opencontainers.image.version=${{ env.VERSION }}
             org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}
