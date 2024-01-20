@@ -11,6 +11,10 @@ on:
         description: "Name of the OCI image."
         required: true
         type: string
+    secrets:
+      push-token:
+        description: "Image push token"
+        required: true
 
 env:
   REGISTRY: ghcr.io
@@ -59,7 +63,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ github.actor }}
-          password: ${{ secrets.IMAGE_PUSH_TOKEN }}
+          password: ${{ secrets.push-token }}
           registry: ${{ env.REGISTRY }}
 
       - name: Build and push
@@ -121,7 +125,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ github.actor }}
-          password: ${{ secrets.IMAGE_PUSH_TOKEN }}
+          password: ${{ secrets.push-token }}
           registry: ${{ env.REGISTRY }}
       
       - name: Create manifest list and push
