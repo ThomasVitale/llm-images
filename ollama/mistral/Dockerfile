@@ -1,3 +1,9 @@
 FROM docker.io/ollama/ollama:latest
 
-RUN /bin/sh -c "/bin/ollama serve & sleep 1 && ollama pull mistral"
+RUN bash -c '                                  \
+    ( ollama serve ) & serverpid="$!";         \
+    sleep 5;                                   \
+    ollama pull mistral &&                     \
+    kill "$serverpid" &&                       \
+    wait "$serverpid"                          \
+'
