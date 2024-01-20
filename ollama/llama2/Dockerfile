@@ -11,3 +11,7 @@ RUN bash -c '                             \
     kill "$serverpid" &&                  \
     wait "$serverpid"                     \
 '
+
+ENTRYPOINT ["/bin/ollama"]
+
+CMD ["serve"]
