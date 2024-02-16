@@ -12,7 +12,7 @@ Catalog of multi-architecture OCI images for popular free and/or open-source Lar
 
 ## 🌟 Examples
 
-These images are used for running LLMs in development and testing using Testcontainers or Docker Compose. You can find examples of usage in [Spring AI](https://github.com/ThomasVitale/llm-apps-java-spring-ai) and [LangChain4j]((https://github.com/ThomasVitale/llm-apps-java-langchain4j)).
+These images are used for running LLMs in development and testing using Testcontainers or Docker Compose. You can find examples of usage in [Spring AI](https://github.com/ThomasVitale/llm-apps-java-spring-ai) and [LangChain4j](https://github.com/ThomasVitale/llm-apps-java-langchain4j).
 
 ## 🛡️&nbsp; Security
 
