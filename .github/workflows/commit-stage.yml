@@ -18,6 +18,7 @@ jobs:
       matrix:
         project: [
           {context: ollama/llama2, image: ollama-llama2},
+          {context: ollama/llava, image: ollama-llava},
           {context: ollama/mistral, image: ollama-mistral},
           {context: ollama/orca-mini, image: ollama-orca-mini},
           {context: ollama/phi, image: ollama-phi}
