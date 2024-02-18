@@ -26,7 +26,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-      id-token: write
     strategy:
       fail-fast: false
       matrix:
@@ -54,9 +53,6 @@ jobs:
             org.opencontainers.image.version=${{ github.sha }}
             org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}
 
-      - name: Install Cosign
-        uses: sigstore/cosign-installer@v3.4.0
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -78,17 +74,6 @@ jobs:
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=image,name=${{ env.REGISTRY }}/${{ env.IMAGE }},push-by-digest=true,name-canonical=true,push=true
-      
-      - name: Sign image
-        env:
-          DIGEST: ${{ steps.build.outputs.digest }}
-          TAGS: ${{ steps.meta.outputs.tags }}
-        run: |
-          images=""
-          for tag in ${TAGS}; do
-            images+="${tag}@${DIGEST} "
-          done
-          cosign sign --yes ${images}
 
       - name: Export digest
         run: |
