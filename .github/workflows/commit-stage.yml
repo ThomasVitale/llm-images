@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
     uses: ./.github/workflows/multi-arch-publish.yml
     strategy:
       fail-fast: false
