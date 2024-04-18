@@ -1,5 +1,8 @@
 # OCI Images for Open-Source Large Language Models (LLMs)
 
+![Release Workflow](https://github.com/ThomasVitale/llm-images/actions/workflows/commit-stage.yml/badge.svg)
+[![The SLSA Level 3 badge](https://slsa.dev/images/gh-badge-level3.svg)](https://slsa.dev/spec/v1.0/levels)
+
 Catalog of multi-architecture OCI images for popular free and/or open-source Large Language Models, built and published weekly.
 
 ## 🦙 Ollama
