@@ -4,7 +4,9 @@ Catalog of multi-architecture OCI images for popular free and/or open-source Lar
 
 ## 🦙 Ollama
 
+* `ghcr.io/thomasvitale/ollama-bakllava`
 * `ghcr.io/thomasvitale/ollama-llama2`
+* `ghcr.io/thomasvitale/ollama-llama3`
 * `ghcr.io/thomasvitale/ollama-llava`
 * `ghcr.io/thomasvitale/ollama-mistral`
 * `ghcr.io/thomasvitale/ollama-orca-mini`
@@ -17,13 +19,13 @@ All OCI images published in this project are signed with [Sigstore](https://www.
 Using the `cosign` CLI, you can display the supply chain security related artifacts for each image. Use the specific digest you'd like to verify.
 
 ```shell
-cosign tree ghcr.io/thomasvitale/ollama-llama2
+cosign tree ghcr.io/thomasvitale/ollama-llama3
 ```
 
 The result:
 
 ```shell
-📦 Supply Chain Security Related artifacts for an image: ghcr.io/thomasvitale/ollama-llama2
+📦 Supply Chain Security Related artifacts for an image: ghcr.io/thomasvitale/ollama-llama3
 └── 🔐 Signatures for an image tag: ghcr.io/thomasvitale/ollama-llama2:sha256-6838079fb6c6c0ea8c8b7e0c47a1bb365f839764b5480e01d8e0b0141d2817da.sig
    └── 🍒 sha256:c8c8b819ec15833b0ae8a4f64ad5f3e9fbc1bd175e91051290f33c2a707958da
 ```
@@ -34,7 +36,7 @@ You can verify the signature and its claims:
 cosign verify \
    --certificate-identity-regexp https://github.com/ThomasVitale \
    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-   ghcr.io/thomasvitale/ollama-llama2 | jq
+   ghcr.io/thomasvitale/ollama-llama3 | jq
 ```
 
 ## 🌟 Examples
