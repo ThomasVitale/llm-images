@@ -14,6 +14,7 @@ Catalog of multi-architecture OCI images for popular free and/or open-source Lar
 * `ghcr.io/thomasvitale/ollama-mistral`
 * `ghcr.io/thomasvitale/ollama-orca-mini`
 * `ghcr.io/thomasvitale/ollama-phi`
+* `ghcr.io/thomasvitale/ollama-phi3`
 
 ## 🔐 Signatures and Attestations
 
