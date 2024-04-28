@@ -31,4 +31,4 @@ jobs:
       context: ${{ matrix.project.context }}
       image: ${{ matrix.project.image }}   
     secrets:  
-      push-token: ${{ secrets.IMAGE_PUSH_TOKEN }}
+      push-token: ${{ secrets.GITHUB_TOKEN }}
