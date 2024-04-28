@@ -25,7 +25,7 @@ jobs:
           {context: ollama/mistral, image: ollama-mistral},
           {context: ollama/orca-mini, image: ollama-orca-mini},
           {context: ollama/phi, image: ollama-phi},
-          {context: ollama/phi-3, image: ollama-phi3}
+          {context: ollama/phi3, image: ollama-phi3}
         ]
     with:
       context: ${{ matrix.project.context }}
