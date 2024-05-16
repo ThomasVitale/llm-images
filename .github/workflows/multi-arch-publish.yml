@@ -173,18 +173,18 @@ jobs:
 
       - name: Sign image
         run: |
-          cosign sign --yes "${REGISTRY}/${IMAGE}@${IMAGE_DIGEST}"
+          cosign sign --yes ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ IMAGE_DIGEST }}
 
-  # provenance:
-  #   needs: [merge]
-  #   permissions:
-  #     actions: read
-  #     id-token: write
-  #     packages: write
-  #   uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.0.0
-  #   with:
-  #     image: ${{ needs.build.outputs.image-name }}
-  #     digest: ${{ needs.build.outputs.image-digest }}
-  #     registry-username: ${{ github.actor }}
-  #   secrets:
-  #     registry-password: ${{ secrets.push-token }}
+  provenance:
+    needs: [merge]
+    permissions:
+      actions: read
+      id-token: write
+      packages: write
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.0.0
+    with:
+      image: ${{ needs.build.outputs.image-name }}
+      digest: ${{ needs.build.outputs.image-digest }}
+      registry-username: ${{ github.actor }}
+    secrets:
+      registry-password: ${{ secrets.push-token }}
