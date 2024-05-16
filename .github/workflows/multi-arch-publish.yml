@@ -163,9 +163,7 @@ jobs:
       - name: Get OCI image info
         id: image-info
         run: |
-          image_reference=$(crane digest ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ steps.meta.outputs.version }})
-          echo $image_reference
-          image_digest=$(echo "$image_reference" | awk -F '@' '{print $2}')
+          image_digest=$(crane digest ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ steps.meta.outputs.version }})
           echo $image_digest
           echo "IMAGE_DIGEST=${image_digest}" >> $GITHUB_ENV
           echo "digest=${image_digest}" >> $GITHUB_OUTPUT
@@ -173,7 +171,7 @@ jobs:
 
       - name: Sign image
         run: |
-          cosign sign --yes ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ env.IMAGE_DIGEST }}
+          cosign sign --yes ${{ env.REGISTRY }}/${{ env.IMAGE }}@${{ env.IMAGE_DIGEST }}
 
   provenance:
     needs: [merge]
