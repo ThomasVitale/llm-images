@@ -101,6 +101,11 @@ jobs:
       image-name: ${{ steps.image-info.outputs.name }}
     steps:
 
+      - name: Prepare
+        run: |
+          timestamp=$(date +%Y%m%d-%H%M%S)
+          echo "TIMESTAMP=${timestamp}" >> $GITHUB_ENV
+
       - name: Download digests
         uses: actions/download-artifact@v4
         with:
@@ -126,7 +131,7 @@ jobs:
             org.opencontainers.image.version=${{ github.sha }}
             org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}
           tags: |
-            type=schedule,pattern={{date 'YYYYMMDD-hhmmss'}},enable={{is_default_branch}}
+            type=raw,value=${{ env.TIMESTAMP }},enable={{is_default_branch}}
             type=raw,value=latest,enable={{is_default_branch}}
             type=sha,format=long
 
@@ -147,10 +152,18 @@ jobs:
         run: |
           docker buildx imagetools inspect ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ steps.meta.outputs.version }}
       
+      - name: Setup Arkade
+        uses: alexellis/setup-arkade@v2
+
+      - name: Install crane
+        uses: alexellis/arkade-get@master
+        with:
+          crane: 0.19.1
+      
       - name: Get OCI image info
         id: image-info
         run: |
-          image_reference=$(docker inspect --format='{{index .RepoDigests 0}}' ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ steps.meta.outputs.version }})
+          image_reference=$(crane digest ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ steps.meta.outputs.version }})
           echo $image_reference
           image_digest=$(echo "$image_reference" | awk -F '@' '{print $2}')
           echo $image_digest
