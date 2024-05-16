@@ -10,6 +10,7 @@ jobs:
   publish:
     name: Publish
     permissions:
+      actions: read
       contents: read
       packages: write
       id-token: write
