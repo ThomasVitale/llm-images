@@ -45,6 +45,12 @@ cosign verify \
    ghcr.io/thomasvitale/ollama-llama3 | jq
 ```
 
+You can also verify the SLSA attestation as follows:
+
+```shell
+gh attestation verify oci://ghcr.io/thomasvitale/ollama-llama3 -R ThomasVitale/llm-images
+```
+
 ## 🌟 Examples
 
 These images are used for running LLMs in development and testing using [Testcontainers](https://testcontainers.com/modules/ollama/) or Docker Compose. You can find examples of usage in [Spring AI](https://github.com/ThomasVitale/llm-apps-java-spring-ai) and [LangChain4j](https://github.com/ThomasVitale/llm-apps-java-langchain4j).
