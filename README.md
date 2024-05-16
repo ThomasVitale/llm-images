@@ -7,6 +7,8 @@ Catalog of multi-architecture OCI images for popular free and/or open-source Lar
 
 ## 🦙 Ollama
 
+Images are built weekly based on the latest version of [Ollama](https://ollama.com) and the specific models. They are published with three tags: `latest`, sha, and timestamp.
+
 * `ghcr.io/thomasvitale/ollama-bakllava`
 * `ghcr.io/thomasvitale/ollama-llama2`
 * `ghcr.io/thomasvitale/ollama-llama3`
@@ -30,8 +32,8 @@ The result:
 
 ```shell
 📦 Supply Chain Security Related artifacts for an image: ghcr.io/thomasvitale/ollama-llama3
-└── 🔐 Signatures for an image tag: ghcr.io/thomasvitale/ollama-llama2:sha256-6838079fb6c6c0ea8c8b7e0c47a1bb365f839764b5480e01d8e0b0141d2817da.sig
-   └── 🍒 sha256:c8c8b819ec15833b0ae8a4f64ad5f3e9fbc1bd175e91051290f33c2a707958da
+└── 🔐 Signatures for an image tag: ghcr.io/thomasvitale/ollama-llama3:sha256-0d23dd91730d369befa3542bf44e2c1b86d9679b3d42f2fca0b206b028fe8f65.sig
+   └── 🍒 sha256:e71beb9f6d24d788d77962d9b3bbc7740fa0c6d071f23bb926f10defa2c58cfa
 ```
 
 You can verify the signature and its claims:
@@ -45,7 +47,7 @@ cosign verify \
 
 ## 🌟 Examples
 
-These images are used for running LLMs in development and testing using Testcontainers or Docker Compose. You can find examples of usage in [Spring AI](https://github.com/ThomasVitale/llm-apps-java-spring-ai) and [LangChain4j](https://github.com/ThomasVitale/llm-apps-java-langchain4j).
+These images are used for running LLMs in development and testing using [Testcontainers](https://testcontainers.com/modules/ollama/) or Docker Compose. You can find examples of usage in [Spring AI](https://github.com/ThomasVitale/llm-apps-java-spring-ai) and [LangChain4j](https://github.com/ThomasVitale/llm-apps-java-langchain4j).
 
 ## 🛡️&nbsp; Security
 
@@ -54,3 +56,5 @@ The security process for reporting vulnerabilities is described in [SECURITY.md]
 ## 🖊️&nbsp; License
 
 This project is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for more information.
+[Ollama](https://github.com/ollama/ollama/blob/main/LICENSE) is licensed under the MIT License.
+Each model is licensed individually. You can find more information in the Ollama [model library](https://ollama.com/library).

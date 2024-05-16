@@ -97,6 +97,11 @@ jobs:
       packages: write
       id-token: write
     steps:
+      - name: Prepare
+        run: |
+          timestamp=$(date +%Y%m%d)
+          echo "TIMESTAMP=${timestamp}" >> $GITHUB_ENV
+
       - name: Download digests
         uses: actions/download-artifact@v4
         with:
@@ -123,7 +128,7 @@ jobs:
             org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value=$(date +%Y%m%d)
+            type=raw,value=${{ env.TIMESTAMP }},enable={{is_default_branch}}
             type=sha,format=long
 
       - name: Login to container registry
