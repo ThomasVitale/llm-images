@@ -126,8 +126,8 @@ jobs:
             org.opencontainers.image.version=${{ github.sha }}
             org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}
           tags: |
+            type=schedule,pattern={{date 'YYYYMMDD-hhmmss'}},enable={{is_default_branch}}
             type=raw,value=latest,enable={{is_default_branch}}
-            type=schedule,pattern={{date 'YYYYMMDD'}}
             type=sha,format=long
 
       - name: Login to container registry
@@ -141,7 +141,7 @@ jobs:
         working-directory: /tmp/digests
         run: |
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf '${{ env.REGISTRY }}/${{ env.IMAGE }}@sha256:%s ' *)          
+            $(printf '${{ env.REGISTRY }}/${{ env.IMAGE }}@sha256:%s ' *)       
 
       - name: Inspect image
         run: |
