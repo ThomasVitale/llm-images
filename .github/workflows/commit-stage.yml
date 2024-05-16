@@ -10,10 +10,10 @@ jobs:
   publish:
     name: Publish
     permissions:
-      actions: read
+      attestations: write
       contents: read
-      packages: write
       id-token: write
+      packages: write
     uses: ./.github/workflows/multi-arch-publish.yml
     strategy:
       fail-fast: false
