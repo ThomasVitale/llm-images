@@ -173,7 +173,7 @@ jobs:
 
       - name: Sign image
         run: |
-          cosign sign --yes ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ IMAGE_DIGEST }}
+          cosign sign --yes ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ env.IMAGE_DIGEST }}
 
   provenance:
     needs: [merge]
