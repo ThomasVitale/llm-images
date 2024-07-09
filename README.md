@@ -9,10 +9,13 @@ Catalog of multi-architecture OCI images for popular free and/or open-source Lar
 
 Images are built weekly based on the latest version of [Ollama](https://ollama.com) and the specific models. They are published with three tags: `latest`, sha, and timestamp.
 
+* `ghcr.io/thomasvitale/ollama-aya`
 * `ghcr.io/thomasvitale/ollama-bakllava`
+* `ghcr.io/thomasvitale/ollama-gemma2`
 * `ghcr.io/thomasvitale/ollama-llama2`
 * `ghcr.io/thomasvitale/ollama-llama3`
 * `ghcr.io/thomasvitale/ollama-llava`
+* `ghcr.io/thomasvitale/ollama-mixtral`
 * `ghcr.io/thomasvitale/ollama-mistral`
 * `ghcr.io/thomasvitale/ollama-orca-mini`
 * `ghcr.io/thomasvitale/ollama-phi`

@@ -19,10 +19,13 @@ jobs:
       fail-fast: false
       matrix:
         project: [
+          {context: ollama/aya, image: ollama-aya},
           {context: ollama/bakllava, image: ollama-bakllava},
+          {context: ollama/gemma2, image: ollama-gemma2},
           {context: ollama/llama2, image: ollama-llama2},
           {context: ollama/llama3, image: ollama-llama3},
           {context: ollama/llava, image: ollama-llava},
+          {context: ollama/mixtral, image: ollama-mixtral},
           {context: ollama/mistral, image: ollama-mistral},
           {context: ollama/orca-mini, image: ollama-orca-mini},
           {context: ollama/phi, image: ollama-phi},
