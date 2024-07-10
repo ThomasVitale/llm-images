@@ -25,6 +25,7 @@ jobs:
           {context: ollama/llama2, image: ollama-llama2},
           {context: ollama/llama3, image: ollama-llama3},
           {context: ollama/llava, image: ollama-llava},
+          {context: ollama/llava-phi3, image: ollama-llava-phi3},
           {context: ollama/mistral, image: ollama-mistral},
           {context: ollama/orca-mini, image: ollama-orca-mini},
           {context: ollama/phi, image: ollama-phi},
