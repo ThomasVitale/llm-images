@@ -14,6 +14,7 @@ Images are built weekly based on the latest version of [Ollama](https://ollama.c
 * `ghcr.io/thomasvitale/ollama-gemma2`
 * `ghcr.io/thomasvitale/ollama-llama2`
 * `ghcr.io/thomasvitale/ollama-llama3`
+* `ghcr.io/thomasvitale/ollama-llama3-1`
 * `ghcr.io/thomasvitale/ollama-llava`
 * `ghcr.io/thomasvitale/ollama-llava-phi3`
 * `ghcr.io/thomasvitale/ollama-mistral`
