@@ -30,6 +30,7 @@ jobs:
           {context: ollama/mistral, image: ollama-mistral},
           {context: ollama/mistral-nemo, image: ollama-mistral-nemo},
           {context: ollama/moondream, image: ollama-moondream},
+          {context: ollama/nomic-embed-text, image: ollama-nomic-embed-text},
           {context: ollama/orca-mini, image: ollama-orca-mini},
           {context: ollama/phi, image: ollama-phi},
           {context: ollama/phi3, image: ollama-phi3}
