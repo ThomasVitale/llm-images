@@ -67,7 +67,7 @@ jobs:
           registry: ${{ env.REGISTRY }}
 
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         id: build
         with:
           context: ${{ inputs.context }}
@@ -118,7 +118,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
       
       - name: Install Cosign
-        uses: sigstore/cosign-installer@v3.5.0
+        uses: sigstore/cosign-installer@v3.6.0
 
       - name: Generate Docker meta information
         id: meta
@@ -154,12 +154,12 @@ jobs:
           docker buildx imagetools inspect ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ steps.meta.outputs.version }}
       
       - name: Setup Arkade
-        uses: alexellis/setup-arkade@v2
+        uses: alexellis/setup-arkade@v3
 
       - name: Install crane
         uses: alexellis/arkade-get@master
         with:
-          crane: v0.19.1
+          crane: v0.20.2
       
       - name: Get OCI image digest
         id: image-info
