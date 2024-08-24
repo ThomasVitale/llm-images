@@ -30,6 +30,7 @@ jobs:
           {context: ollama/mxbai-embed-large, image: ollama-mxbai-embed-large},
           {context: ollama/nomic-embed-text, image: ollama-nomic-embed-text},
           {context: ollama/orca-mini, image: ollama-orca-mini},
+          {context: ollama/phi3.5, image: ollama-phi3-5},
         ]
     with:
       context: ${{ matrix.project.context }}

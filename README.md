@@ -20,6 +20,7 @@ Images are built weekly based on the latest version of [Ollama](https://ollama.c
 * `ghcr.io/thomasvitale/ollama-mxbai-embed-large`
 * `ghcr.io/thomasvitale/ollama-nomic-embed-text`
 * `ghcr.io/thomasvitale/ollama-orca-mini`
+* `ghcr.io/thomasvitale/ollama-phi3-5`
 
 The following images are still available, but they will not receive further updates.
 
