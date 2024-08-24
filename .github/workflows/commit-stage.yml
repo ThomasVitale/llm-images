@@ -22,19 +22,14 @@ jobs:
           {context: ollama/aya, image: ollama-aya},
           {context: ollama/bakllava, image: ollama-bakllava},
           {context: ollama/gemma2, image: ollama-gemma2},
-          {context: ollama/llama2, image: ollama-llama2},
-          {context: ollama/llama3, image: ollama-llama3},
           {context: ollama/llama3.1, image: ollama-llama3-1},
           {context: ollama/llava, image: ollama-llava},
-          {context: ollama/llava-phi3, image: ollama-llava-phi3},
           {context: ollama/mistral, image: ollama-mistral},
           {context: ollama/mistral-nemo, image: ollama-mistral-nemo},
           {context: ollama/moondream, image: ollama-moondream},
           {context: ollama/mxbai-embed-large, image: ollama-mxbai-embed-large},
           {context: ollama/nomic-embed-text, image: ollama-nomic-embed-text},
           {context: ollama/orca-mini, image: ollama-orca-mini},
-          {context: ollama/phi, image: ollama-phi},
-          {context: ollama/phi3, image: ollama-phi3}
         ]
     with:
       context: ${{ matrix.project.context }}
