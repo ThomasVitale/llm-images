@@ -34,7 +34,6 @@ jobs:
       matrix:
         project: [
           {context: ollama/aya, image: ollama-aya},
-          {context: ollama/bakllava, image: ollama-bakllava},
           {context: ollama/gemma2, image: ollama-gemma2},
           {context: ollama/llama3.1, image: ollama-llama3-1},
           {context: ollama/llava, image: ollama-llava},
