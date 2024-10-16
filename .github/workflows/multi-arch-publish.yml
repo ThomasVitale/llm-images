@@ -95,7 +95,6 @@ jobs:
     needs: [build]
     runs-on: ubuntu-24.04
     permissions:
-      attestations: write
       contents: read
       id-token: write
       packages: write
