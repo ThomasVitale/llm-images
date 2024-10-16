@@ -41,6 +41,7 @@ jobs:
           {context: ollama/moondream, image: ollama-moondream},
           {context: ollama/nomic-embed-text, image: ollama-nomic-embed-text},
           {context: ollama/phi3.5, image: ollama-phi3-5},
+          {context: ollama/qwen2.5, image: ollama-qwen2-5},
         ]
     with:
       context: ${{ matrix.project.context }}

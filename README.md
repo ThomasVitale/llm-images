@@ -17,6 +17,7 @@ Images are built weekly based on the latest version of [Ollama](https://ollama.c
 * `ghcr.io/thomasvitale/ollama-moondream`
 * `ghcr.io/thomasvitale/ollama-nomic-embed-text`
 * `ghcr.io/thomasvitale/ollama-phi3-5`
+* `ghcr.io/thomasvitale/ollama-qwen2-5`
 
 The following images are still available, but they will not receive further updates.
 
