@@ -24,7 +24,7 @@ jobs:
   publish:
     name: Publish
     permissions:
-      attestations: write
+      actions: read
       contents: read
       id-token: write
       packages: write
