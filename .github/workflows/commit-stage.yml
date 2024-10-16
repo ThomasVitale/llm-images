@@ -2,9 +2,23 @@ name: Commit Stage
 
 on:
   push:
+    paths-ignore:
+      - '.editorconfig'
+      - '.gitignore'
+      - '*.adoc'
+      - '*.png'
+      - '*.md'
+      - 'docs/**'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/*.md'
+      - '.github/*.yml'
+      - '.github/*.yaml'
   schedule: # Every Monday
     - cron: '0 0 * * 1'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   publish:
