@@ -39,15 +39,17 @@ All OCI images published in this project are signed with [Sigstore](https://www.
 Using the `cosign` CLI, you can display the supply chain security related artifacts for each image. Use the specific digest you'd like to verify.
 
 ```shell
-cosign tree ghcr.io/thomasvitale/ollama-llama3
+cosign tree ghcr.io/thomasvitale/ollama-mistral
 ```
 
 The result:
 
 ```shell
-📦 Supply Chain Security Related artifacts for an image: ghcr.io/thomasvitale/ollama-llama3
-└── 🔐 Signatures for an image tag: ghcr.io/thomasvitale/ollama-llama3:sha256-0d23dd91730d369befa3542bf44e2c1b86d9679b3d42f2fca0b206b028fe8f65.sig
-   └── 🍒 sha256:e71beb9f6d24d788d77962d9b3bbc7740fa0c6d071f23bb926f10defa2c58cfa
+📦 Supply Chain Security Related artifacts for an image: ghcr.io/thomasvitale/ollama-mistral
+└── 💾 Attestations for an image tag: ghcr.io/thomasvitale/ollama-mistral:sha256-38e80d235799aaa8d1bd98733c8b24ae0afb43620391205bb990d4513ee9e751.att
+   └── 🍒 sha256:89e502711643e116436fc73ba50345e414f73e90cde7c6d0cc29a4b81a7ffce4
+└── 🔐 Signatures for an image tag: ghcr.io/thomasvitale/ollama-mistral:sha256-38e80d235799aaa8d1bd98733c8b24ae0afb43620391205bb990d4513ee9e751.sig
+   └── 🍒 sha256:951e0e299a6585ae117ca31f4df7edb20907391df228d52d624cb552a95c71d4
 ```
 
 You can verify the signature and its claims:
@@ -56,13 +58,16 @@ You can verify the signature and its claims:
 cosign verify \
    --certificate-identity-regexp https://github.com/ThomasVitale \
    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-   ghcr.io/thomasvitale/ollama-llama3 | jq
+   ghcr.io/thomasvitale/ollama-mistral | jq
 ```
 
 You can also verify the SLSA attestation as follows:
 
 ```shell
-gh attestation verify oci://ghcr.io/thomasvitale/ollama-llama3 -R ThomasVitale/llm-images
+cosign verify-attestation --type slsaprovenance \
+   --certificate-identity-regexp https://github.com/slsa-framework \
+   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+   ghcr.io/thomasvitale/ollama-mistral | jq .payload -r | base64 --decode | jq
 ```
 
 ## 🌟 Examples
