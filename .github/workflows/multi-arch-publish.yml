@@ -181,8 +181,8 @@ jobs:
     uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.0.0
     permissions:
       actions: read
-      contents: write
       id-token: write
+      packages: write
     with:
       image: ${{ needs.merge.outputs.image-name }}
       digest: ${{ needs.merge.outputs.image-digest }}

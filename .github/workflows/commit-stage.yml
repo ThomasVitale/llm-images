@@ -25,7 +25,7 @@ jobs:
     name: Publish
     permissions:
       actions: read
-      contents: write
+      contents: read
       id-token: write
       packages: write
     uses: ./.github/workflows/multi-arch-publish.yml
