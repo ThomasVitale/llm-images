@@ -2,6 +2,8 @@ name: Commit Stage
 
 on:
   push:
+    branches:
+      - main
     paths-ignore:
       - '.editorconfig'
       - '.gitignore'
