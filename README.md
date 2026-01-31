@@ -3,6 +3,9 @@
 ![Release Workflow](https://github.com/ThomasVitale/llm-images/actions/workflows/commit-stage.yml/badge.svg)
 [![The SLSA Level 3 badge](https://slsa.dev/images/gh-badge-level3.svg)](https://slsa.dev/spec/v1.0/levels)
 
+> **Warning**
+> This project has been archived. The images will remain available on GitHub Container Registry, but they won't receive further updated. It's recommended to adopt the official Ollama image directly and pull the models needed dynamically.
+
 Catalog of multi-architecture OCI images for popular free and/or open-source Large Language Models, built and published weekly.
 
 ## 🦙 Ollama
